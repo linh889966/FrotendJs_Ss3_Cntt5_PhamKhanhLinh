@@ -1,65 +1,44 @@
-import java.util.*;
-
-class Account {
-    public String accountNumber;
-    protected double balance;
-    protected List<String> history;
-    protected String status;
-
-    public Account(String accountNumber, double balance, String status) {
-        this.accountNumber = accountNumber;
-        this.balance = Math.max(0, balance);
-        this.status = status;
-        this.history = new ArrayList<>();
-        history.add("OPEN balance=" + this.balance);
-    }
-
-    public void deposit(double amount) {
-        if (amount <= 0) return;
-        balance += amount;
-        history.add("DEPOSIT +" + amount + " => balance=" + balance);
-    }
-
-    public void withdraw(double amount) {
-        if (amount <= 0) return;
-        if (amount <= balance) {
-            balance -= amount;
-            history.add("WITHDRAW -" + amount + " => balance=" + balance);
-        } else {
-            history.add("WITHDRAW " + amount + " FAILED (insufficient) balance=" + balance);
-        }
-    }
-
-    public void showHistory() {
-        System.out.println("History of " + accountNumber + ":");
-        for (String line : history) System.out.println(line);
-    }
+class BankAccount {
+  constructor(accountNumber, openingBalance = 0) {
+    this.accountNumber = accountNumber;
+    this._balance = openingBalance;
+    this._history = [];
+    this._status = "active";
+  }
+  deposit(amount) {
+    if (amount <= 0) return false;
+    this._balance += amount;
+    this._history.push({ type: "DEPOSIT", amount, balance: this._balance, time: new Date().toISOString() });
+    console.log(`[${this.accountNumber}] +${amount} -> ${this._balance}`);
+    return true;
+  }
+  withdraw(amount) {
+    if (amount <= 0) return false;
+    if (amount > this._balance) { console.log("Insufficient funds"); return false; }
+    this._balance -= amount;
+    this._history.push({ type: "WITHDRAW", amount, balance: this._balance, time: new Date().toISOString() });
+    console.log(`[${this.accountNumber}] -${amount} -> ${this._balance}`);
+    return true;
+  }
+  showHistory() { console.table(this._history); }
+  get balance() { return this._balance; }
 }
 
-class SavingAccount extends Account {
-    private double interestRate;
-
-    public SavingAccount(String accountNumber, double balance, String status, double interestRate) {
-        super(accountNumber, balance, status);
-        this.interestRate = interestRate;
-    }
-
-    @Override
-    public void withdraw(double amount) {
-        if (amount <= 0) return;
-        double taken = Math.min(amount, balance);
-        balance -= taken;
-        history.add("WITHDRAW request=" + amount + " taken=" + taken + " => balance=" + balance);
-    }
+class SavingAccount extends BankAccount {
+  constructor(accountNumber, openingBalance = 0, interestRate = 0.03) {
+    super(accountNumber, openingBalance);
+    this.interestRate = interestRate;
+  }
+  withdraw(amount) {
+    if (amount <= 0) return false;
+    if (amount > this._balance) amount = this._balance;
+    return super.withdraw(amount);
+  }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        SavingAccount sa = new SavingAccount("ACC-001", 1000, "active", 0.03);
-        sa.deposit(500);
-        sa.withdraw(1200);
-        sa.withdraw(500);
-        sa.deposit(50);
-        sa.showHistory();
-    }
-}
+const sAcc = new SavingAccount("SA-001", 1000, 0.05);
+sAcc.deposit(250);
+sAcc.withdraw(500);
+sAcc.withdraw(1000);
+console.log("Balance:", sAcc.balance);
+sAcc.showHistory();

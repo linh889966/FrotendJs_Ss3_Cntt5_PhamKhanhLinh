@@ -1,47 +1,20 @@
-abstract class Person {
-    protected String name;
-
-    public Person(String name) {
-        this.name = name;
-    }
-
-    public abstract void displayInfo();
+class Person {
+  constructor(name) {
+    if (new.target === Person) throw new Error("Person is abstract");
+    this.name = name;
+  }
+  displayInfo() { throw new Error("displayInfo() must be overridden"); }
 }
 
 class Student extends Person {
-    private String studentId;
-
-    public Student(String name, String studentId) {
-        super(name);
-        this.studentId = studentId;
-    }
-
-    @Override
-    public void displayInfo() {
-        System.out.println("Student Name: " + name + ", ID: " + studentId);
-    }
+  constructor(name, id) { super(name); this.id = id; }
+  displayInfo() { console.log(`Student - id: ${this.id} | name: ${this.name}`); }
 }
 
 class Teacher extends Person {
-    private String subject;
-
-    public Teacher(String name, String subject) {
-        super(name);
-        this.subject = subject;
-    }
-
-    @Override
-    public void displayInfo() {
-        System.out.println("Teacher Name: " + name + ", Subject: " + subject);
-    }
+  constructor(name, subject) { super(name); this.subject = subject; }
+  displayInfo() { console.log(`Teacher - name: ${this.name} | subject: ${this.subject}`); }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        Student s = new Student("Nguyen Van A", "SV001");
-        Teacher t = new Teacher("Tran Thi B", "Mathematics");
-
-        s.displayInfo();
-        t.displayInfo();
-    }
-}
+new Student("Lan", "ST001").displayInfo();
+new Teacher("Huy", "Math").displayInfo();

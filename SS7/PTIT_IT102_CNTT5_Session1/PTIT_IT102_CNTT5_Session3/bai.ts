@@ -1,48 +1,21 @@
-abstract class Animal {
-    protected String name;
-
-    public Animal(String name) {
-        this.name = name;
-    }
-
-    public abstract void makeNoise();
-
-    public void printName() {
-        System.out.println(name);
-    }
+class Animal {
+  constructor(name) {
+    if (new.target === Animal) throw new Error("Animal is abstract");
+    this.name = name;
+  }
+  printName() { console.log(this.name); }
+  makeNoise() { throw new Error("makeNoise() must be overridden"); }
 }
 
 class Cat extends Animal {
-    public Cat(String name) {
-        super(name);
-    }
-
-    @Override
-    public void makeNoise() {
-        System.out.println("meo meo");
-    }
+  makeNoise() { console.log("meo meo"); }
 }
 
 class Dog extends Animal {
-    public Dog(String name) {
-        super(name);
-    }
-
-    @Override
-    public void makeNoise() {
-        System.out.println("gâu gâu");
-    }
+  makeNoise() { console.log("gâu gâu"); }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        Animal cat = new Cat("Mèo Mun");
-        Animal dog = new Dog("Cún Vàng");
-
-        cat.printName();
-        cat.makeNoise();
-
-        dog.printName();
-        dog.makeNoise();
-    }
-}
+const c = new Cat("Mướp");
+const d = new Dog("Vàng");
+c.printName(); c.makeNoise();
+d.printName(); d.makeNoise();
