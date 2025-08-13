@@ -2,7 +2,7 @@ class Employee {
   name;
   _company;
   #phone;
-  constructor(name, company, phone) {
+  constructor(name: string, company: string, phone: string)  {
     this.name = name;
     this._company = company;
     this.#phone = phone;
@@ -15,7 +15,7 @@ class Employee {
 }
 
 class Manager extends Employee {
-  constructor(name, company, phone, teamSize) {
+  constructor(name: string, company: string, phone: string, teamSize: number) {
     super(name, company, phone);
     this.teamSize = teamSize;
   }
