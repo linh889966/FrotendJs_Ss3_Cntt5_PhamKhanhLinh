@@ -1,0 +1,7 @@
+.inputs-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 520px;
+  margin: 20px 0;
+}

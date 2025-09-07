@@ -1,0 +1,10 @@
+.pc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pc-price {
+  font-weight: 600;
+  color: #555;
+}
