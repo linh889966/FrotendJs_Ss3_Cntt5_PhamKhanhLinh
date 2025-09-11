@@ -1,0 +1,9 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #222; }
+.header { border-bottom: 1px solid #eee; }
+.nav { display: flex; gap: 28px; padding: 18px 24px; justify-content: center; }
+
+.link { position: relative; text-decoration: none; color: #333; font-size: 20px; padding: 10px 16px; border-radius: 6px; }
+.link.active { background: #e53935; color: #fff; }
+
+.page { max-width: 900px; margin: 40px auto; padding: 0 16px; text-align: center; }
