@@ -1,0 +1,7 @@
+{
+  "posts": [
+    { "id": 1, "title": "React cơ bản", "author": "Nguyen Van A" },
+    { "id": 2, "title": "Sử dụng Axios trong React", "author": "Tran Thi B" },
+    { "id": 3, "title": "Markdown trong React", "author": "Le Van C" }
+  ]
+}

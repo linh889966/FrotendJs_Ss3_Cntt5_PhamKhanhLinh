@@ -1,0 +1,9 @@
+{
+  "name": "ex07-server",
+  "scripts": {
+    "dev": "json-server --watch db.json --port 3007"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  }
+}

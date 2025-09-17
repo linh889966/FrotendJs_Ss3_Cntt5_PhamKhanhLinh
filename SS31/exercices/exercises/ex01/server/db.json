@@ -1,0 +1,6 @@
+{
+  "posts": [
+    { "id": 1, "title": "State trong ReactJS", "thumbnail": "", "content": "Nội dung", "status": "draft", "publishedAt": "2024-03-04" },
+    { "id": 2, "title": "Tổng quan về ReactJS", "thumbnail": "", "content": "Nội dung", "status": "published", "publishedAt": "2024-03-03" }
+  ]
+}

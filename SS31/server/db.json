@@ -1,0 +1,21 @@
+{
+    "task":[
+        {
+            "id":1,
+            "title":"State trong React",
+            "date":"04/03/2024",
+            "img":"https://reactjs.org/logo-og.png",
+            "status":true
+
+        },
+        {
+            "id":2,
+            "title":"Tổng quan về React",
+            "date":"05/03/2024",
+            "img":"https://reactjs.org/logo-og.png",
+            "status": false
+        }
+    ]
+
+
+}
