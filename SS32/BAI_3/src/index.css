@@ -1,0 +1,4 @@
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#111}
+button{cursor:pointer;border:1px solid #ddd;padding:6px 10px;border-radius:6px;background:#fff}
+button:hover{background:#f2f2f2}
