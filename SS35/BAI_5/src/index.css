@@ -1,0 +1,5 @@
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+button { background: none; }
+button:focus { outline: 2px solid rgba(255,255,255,.25); outline-offset: 2px; }
